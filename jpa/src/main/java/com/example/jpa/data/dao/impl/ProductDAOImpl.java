@@ -26,13 +26,13 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public Product selectProductName(Long number, String name) {
-        Product selectProduct = productRepository.getReferenceById(number);
-        return selectProduct;
+    public Product selectProduct(Long number) {
+        Product selectedProduct = productRepository.getReferenceById(number);
+        return selectedProduct;
     }
 
     @Override
-    public Product updateProductName(Long number, String name) throws Exception {
+    public Product updateProductName(Long number, String name, LocalDateTime updatedAt) throws Exception {
         Optional<Product> selectedProduct = productRepository.findById(number);
 
         Product updatedProduct;

@@ -18,6 +18,9 @@ public class Product {
     private String name;
 
     @Column(nullable = false)
+    private Integer price;
+
+    @Column(nullable = false)
     private Integer stock;
 
     private LocalDateTime createdAt;
