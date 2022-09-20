@@ -4,6 +4,8 @@ import com.example.jpa.data.dto.ChangeProductNameDTO;
 import com.example.jpa.data.dto.ProductDTO;
 import com.example.jpa.data.dto.ProductResponseDTO;
 import com.example.jpa.service.ProductService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,29 +22,33 @@ public class ProductController {
         this.productService = productService;
     }
 
+    @ApiOperation(value = "Product get api", notes = "Spring JPA를 이용한 database연동 tutorial")
     @GetMapping("/get")
-    public ResponseEntity<ProductResponseDTO> getProduct(Long number){
+    public ResponseEntity<ProductResponseDTO> getProduct(@ApiParam(value = "품목 번호", required = true) Long number){
         ProductResponseDTO responseDTO = productService.getProduct(number);
 
         return ResponseEntity.status(HttpStatus.OK).body(responseDTO);
     }
 
+    @ApiOperation(value = "Product post api", notes = "Spring JPA를 이용한 database연동 tutorial")
     @PostMapping("/post")
-    public ResponseEntity<ProductResponseDTO> postPrduct(@RequestBody ProductDTO productDTO){
+    public ResponseEntity<ProductResponseDTO> postPrduct(@ApiParam(value = "품목 정보", required = true) @RequestBody ProductDTO productDTO){
         ProductResponseDTO responseDTO = productService.saveProduct(productDTO);
 
         return ResponseEntity.status(HttpStatus.OK).body(responseDTO);
     }
 
+    @ApiOperation(value = "Product put api", notes = "Spring JPA를 이용한 database연동 tutorial")
     @PutMapping("/change")
-    public ResponseEntity<ProductResponseDTO> changeProductName(@RequestBody ChangeProductNameDTO changeProductNameDTO) throws Exception{
+    public ResponseEntity<ProductResponseDTO> changeProductName(@ApiParam(value = "품목 번호와 변경할 이름", required = true) @RequestBody ChangeProductNameDTO changeProductNameDTO) throws Exception{
         ProductResponseDTO responseDTO = productService.changeProduct(changeProductNameDTO.getNumber(), changeProductNameDTO.getName());
 
         return ResponseEntity.status(HttpStatus.OK).body(responseDTO);
     }
 
+    @ApiOperation(value = "Product delete api", notes = "Spring JPA를 이용한 database연동 tutorial")
     @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteProduct(Long number) throws Exception{
+    public ResponseEntity<String> deleteProduct(@ApiParam(value = "삭제할 품목 번호", required = true) Long number) throws Exception{
         productService.deleteProduct(number);
         String msg = "정상적으로 삭제되었습니다.";
 
