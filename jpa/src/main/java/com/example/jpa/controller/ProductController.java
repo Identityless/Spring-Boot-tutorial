@@ -23,15 +23,15 @@ public class ProductController {
     }
 
     @ApiOperation(value = "Product get api", notes = "Spring JPA를 이용한 database연동 tutorial")
-    @GetMapping("/get")
-    public ResponseEntity<ProductResponseDTO> getProduct(@ApiParam(value = "품목 번호", required = true) Long number){
+    @GetMapping(value = "/get")
+    public ResponseEntity<ProductResponseDTO> getProduct(@ApiParam(value = "품목 번호", required = true) @RequestParam Long number){
         ProductResponseDTO responseDTO = productService.getProduct(number);
 
         return ResponseEntity.status(HttpStatus.OK).body(responseDTO);
     }
 
     @ApiOperation(value = "Product post api", notes = "Spring JPA를 이용한 database연동 tutorial")
-    @PostMapping("/post")
+    @PostMapping(value = "/post")
     public ResponseEntity<ProductResponseDTO> postPrduct(@ApiParam(value = "품목 정보", required = true) @RequestBody ProductDTO productDTO){
         ProductResponseDTO responseDTO = productService.saveProduct(productDTO);
 
@@ -39,7 +39,7 @@ public class ProductController {
     }
 
     @ApiOperation(value = "Product put api", notes = "Spring JPA를 이용한 database연동 tutorial")
-    @PutMapping("/change")
+    @PutMapping(value = "/change")
     public ResponseEntity<ProductResponseDTO> changeProductName(@ApiParam(value = "품목 번호와 변경할 이름", required = true) @RequestBody ChangeProductNameDTO changeProductNameDTO) throws Exception{
         ProductResponseDTO responseDTO = productService.changeProduct(changeProductNameDTO.getNumber(), changeProductNameDTO.getName());
 
@@ -47,8 +47,8 @@ public class ProductController {
     }
 
     @ApiOperation(value = "Product delete api", notes = "Spring JPA를 이용한 database연동 tutorial")
-    @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteProduct(@ApiParam(value = "삭제할 품목 번호", required = true) Long number) throws Exception{
+    @DeleteMapping(value = "/delete")
+    public ResponseEntity<String> deleteProduct(@ApiParam(value = "삭제할 품목 번호", required = true) @RequestParam Long number) throws Exception{
         productService.deleteProduct(number);
         String msg = "정상적으로 삭제되었습니다.";
 

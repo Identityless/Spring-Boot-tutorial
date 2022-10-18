@@ -1,4 +1,4 @@
-package com.example.jpa.config;
+package com.example.jpa_demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,16 +18,13 @@ public class SwaggerConfiguration {
     @Bean
     public Docket api(){
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors
-                        .basePackage("com.example.jpa"))
+                .apiInfo(apiInfo()).select().apis(RequestHandlerSelectors.basePackage("com.example.jpa"))
                 .paths(PathSelectors.any()).build();
     }
 
     private ApiInfo apiInfo(){
-        return new ApiInfoBuilder()
-                .title("Spring Boot Open API test with Swagger")
+        return new ApiInfoBuilder().title("Spring Boot Open API test with Swagger")
                 .description("설명 부분").version("1.0.0").build();
     }
 }
+

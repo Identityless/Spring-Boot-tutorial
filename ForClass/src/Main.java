@@ -1,27 +1,19 @@
-import test.Calculator;
-import test.NewCalculator;
-import java.util.Scanner;
-
+import zoo.*;
 
 public class Main {
     public static void main(String[] args) {
+        ZooKeeper zooKeeper = new ZooKeeper();
+        Tiger tiger = new Tiger();
+        Lion lion = new Lion();
+        Egle egle = new Egle();
+        Zebra zebra = new Zebra();
+        Dog dog = new Dog();
 
 
-//        Scanner sc = new Scanner(System.in);
-//
-//        String height;  // 키
-//        String weight;  // 몸무게
-//
-//        System.out.print("키를 입력하세요 : ");
-//        height = sc.next();
-//        System.out.print("몸무게를 입력하세요 : ");
-//        weight = sc.next();
-//
-//        int intheight = Integer.parseInt(height);
-//        int intweight = Integer.parseInt(weight);
-//
-//        double bmi = (double) intheight / intweight;
-//
-//        System.out.println("당신의 bmi는 : "+bmi);
+        zooKeeper.feed(egle);
+
+        zebra.printFood();
+        dog.printFood();
+
     }
 }

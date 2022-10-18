@@ -12,7 +12,7 @@ import java.util.Map;
 @RequestMapping("/api")
 public class PostApiController {
 
-    @PostMapping("post")
+    @PostMapping("/post")
     public void post(@RequestBody PostRequestDto requestData){
         System.out.println(requestData);
     }
