@@ -27,7 +27,7 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public Product selectProduct(Long number) {
-        Product selectedProduct = productRepository.getReferenceById(number);
+        Product selectedProduct = productRepository.getById(number);
         return selectedProduct;
     }
 
