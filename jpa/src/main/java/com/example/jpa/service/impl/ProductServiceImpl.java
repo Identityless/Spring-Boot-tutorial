@@ -6,7 +6,6 @@ import com.example.jpa.data.dto.ProductResponseDTO;
 import com.example.jpa.data.entity.Product;
 import com.example.jpa.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
